@@ -25,7 +25,7 @@
                     Text="Descripcion"
                     FontSize="18"/>
         </StackLayout>
-        <StackLayout Orientation="Horizontal">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
             <Button
                 Text="Editar"
                 FontSize="20"

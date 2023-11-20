@@ -25,29 +25,34 @@ public partial class NuevoProductoPage : ContentPage
 
     private async void OnClickGuardarNuevoProducto(object sender, EventArgs e)
     {
-        if (_producto != null)
-        {
-            _producto.Nombre = Nombre.Text;
-            _producto.Descripcion = Descripcion.Text;
-            _producto.cantidad = Int32.Parse(cantidad.Text);
-            //Utils.Utils.ListaProductos.Insert(_producto.IdProducto, _producto);
-            //await Navigation.
+        try {
+            Console.WriteLine("hELLO");
+            if (_producto != null)
+            {
+                _producto.Nombre = Nombre.Text;
+                _producto.Descripcion = Descripcion.Text;
+                _producto.cantidad = Int32.Parse(cantidad.Text);
+                //Utils.Utils.ListaProductos.Insert(_producto.IdProducto, _producto);
+                //await Navigation.
+            }
+            
+
+            Producto producto = new Producto
+            {
+                IdProducto = 0,
+                Nombre = Nombre.Text,
+                Descripcion = Descripcion.Text,
+                cantidad = Int32.Parse(cantidad.Text)
+            };
+
+            Utils.Utils.ListaProductos.Add(producto);
+
+            await Navigation.PopAsync();
+
         }
-        var toast = CommunityToolkit.Maui.Alerts.Toast.Make("Click en guardar prodcuto", ToastDuration.Short, 14);
-
-        await toast.Show();
-
-        Producto producto = new Producto
-        {
-            IdProducto = 0,
-            Nombre = Nombre.Text,
-            Descripcion = Descripcion.Text,
-            cantidad = Int32.Parse(cantidad.Text)
-        };
-
-        Utils.Utils.ListaProductos.Add(producto);
-
-        await Navigation.PopAsync();
+        catch (Exception ex) {
+            await DisplayAlert("Valores Incorrectos", "Inserte Valores Correctos", "Ok");
+        }
 
     }
 }

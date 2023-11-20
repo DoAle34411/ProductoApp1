@@ -4,7 +4,6 @@
              x:Class="ProductoApp1.ProductoPage"
              Title="ProductoPage">
     <VerticalStackLayout>
-
         <HorizontalStackLayout
             HorizontalOptions="FillAndExpand"
             BackgroundColor="DarkBlue">
@@ -26,23 +25,33 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Image Source="dotnet_bot.png"
-                                   HeightRequest="70"
-                                   WidthRequest="70"/>
-                            <StackLayout Orientation="Vertical">
-                                <Label Text="{Binding Nombre}"
-                                   FontSize="25"
-                                   WidthRequest="300"/>
-                                <Label Text="{Binding cantidad}"
-                                   FontSize="20"/>
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Borrar"
+                                        BackgroundColor="Red"
+                                        />
+                                    <SwipeItem Text="Editar"
+                                        BackgroundColor="Yellow"
+                                        />
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="dotnet_bot.png"
+                                HeightRequest="70"
+                                WidthRequest="70"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Nombre}"
+                                        FontSize="25"
+                                        WidthRequest="300"/>
+                                    <Label Text="{Binding cantidad}"
+                                        FontSize="20"/>
+                                </StackLayout>
                             </StackLayout>
-                        </StackLayout>
-                       
+                        </SwipeView>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-            
         </ListView>
     </VerticalStackLayout>
 </ContentPage>
