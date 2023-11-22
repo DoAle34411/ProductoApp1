@@ -18,8 +18,11 @@ public partial class DetalleProductoPage : ContentPage
         base.OnAppearing();
         _producto = BindingContext as Producto;
         Nombre.Text = _producto.Nombre;
-        Cantidad.Text = _producto.cantidad.ToString();
+        Cantidad.Text = _producto.Cantidad.ToString();
         Descripcion.Text = _producto.Descripcion;
+        Genero.Text = _producto.Genero;
+        Autor.Text = _producto.Autor;
+        Costo.Text = _producto.Costo.ToString();
     }
 
     private async void OnClickVolver(object sender, EventArgs e)
@@ -36,7 +39,7 @@ public partial class DetalleProductoPage : ContentPage
     }
     private async void OnClickBorrar(object sender, EventArgs e)
     {
-        Utils.Utils.ListaProductos.Remove(_producto);
+        Utils.Utils.ListaProducto.Remove(_producto);
         await Navigation.PopAsync();
     }
 }

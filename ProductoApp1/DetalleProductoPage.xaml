@@ -2,30 +2,52 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProductoApp1.DetalleProductoPage"
-             Title="DetalleProductoPage">
-    <VerticalStackLayout>
+             Title="Detalle Producto">
+    <ScrollView>
+        <VerticalStackLayout>
         <Image Source="dotnet_bot.png"
                HorizontalOptions="Center"
                HeightRequest="200"/>
         <Label x:Name="Nombre"
                Text="Nombre"
                FontSize="32"
-               HorizontalOptions="Center"/>
-        <StackLayout Orientation="Horizontal">
+               HorizontalOptions="CenterAndExpand"
+               HorizontalTextAlignment="Center"
+               Margin="20"/>
+        <Label x:Name="Descripcion"
+               Text="Descripcion"
+               FontSize="15"
+               HorizontalOptions="StartAndExpand"
+               Margin="20, 0"/>
+            <StackLayout Orientation="Horizontal" Margin="20">
+                <Label Text="Autor: "
+                        FontSize="18"/>
+                <Label x:Name="Autor"
+                        Text="Autor"
+                        FontSize="18"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="20, 0">
             <Label Text="Cantidad: "
                     FontSize="18"/>
             <Label x:Name="Cantidad"
                     Text="Cantidad"
                     FontSize="18"/>
         </StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Label Text="Decripción: "
+        <StackLayout Orientation="Horizontal" Margin="20">
+            <Label Text="Costo: "
                     FontSize="18"/>
-            <Label x:Name="Descripcion"
-                    Text="Descripcion"
+            <Label x:Name="Costo"
+                    Text="Costo"
                     FontSize="18"/>
         </StackLayout>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+        <StackLayout Orientation="Horizontal" Margin="20, 0">
+            <Label Text="Genero: "
+            FontSize="18"/>
+            <Label x:Name="Genero"
+            Text="Genero"
+            FontSize="18"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Margin="20">
             <Button
                 Text="Editar"
                 FontSize="20"
@@ -51,4 +73,5 @@
             Clicked="OnClickVolver"
         />
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>

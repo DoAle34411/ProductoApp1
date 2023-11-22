@@ -18,8 +18,11 @@ public partial class NuevoProductoPage : ContentPage
         if ( _producto != null )
         {
             Nombre.Text = _producto.Nombre;
-            Descripcion.Text=_producto.Descripcion;
-            cantidad.Text=_producto.cantidad.ToString();
+            Cantidad.Text = _producto.Cantidad.ToString();
+            Descripcion.Text = _producto.Descripcion;
+            Genero.Text = _producto.Genero;
+            Autor.Text = _producto.Autor;
+            Costo.Text = _producto.Costo.ToString();
         }
     }
 
@@ -31,22 +34,30 @@ public partial class NuevoProductoPage : ContentPage
             {
                 _producto.Nombre = Nombre.Text;
                 _producto.Descripcion = Descripcion.Text;
-                _producto.cantidad = Int32.Parse(cantidad.Text);
+                _producto.Cantidad = Int32.Parse(Cantidad.Text);
+                _producto.Genero = Genero.Text;
+                _producto.Autor = Autor.Text;
+                _producto.Costo = Double.Parse(Costo.Text);
                 //Utils.Utils.ListaProductos.Insert(_producto.IdProducto, _producto);
                 //await Navigation.
             }
-            
-
-            Producto producto = new Producto
+            else 
             {
-                IdProducto = 0,
-                Nombre = Nombre.Text,
-                Descripcion = Descripcion.Text,
-                cantidad = Int32.Parse(cantidad.Text)
-            };
+                int id = Utils.Utils.ListaProducto.Count + 1;
+                Producto producto = new Producto
+                {
 
-            Utils.Utils.ListaProductos.Add(producto);
-
+                    IdProducto = id,
+                    Nombre = Nombre.Text,
+                    Descripcion = Descripcion.Text,
+                    Cantidad = Int32.Parse(Cantidad.Text),
+                    Genero = Genero.Text,
+                    Autor = Autor.Text,
+                    Costo = Int32.Parse(Costo.Text)
+                };
+                Utils.Utils.ListaProducto.Add(producto);
+            }
+            
             await Navigation.PopAsync();
 
         }

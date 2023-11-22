@@ -20,7 +20,7 @@ public partial class ProductoPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        var productos = new ObservableCollection<Producto>(Utils.Utils.ListaProductos);
+        var productos = new ObservableCollection<Producto>(Utils.Utils.ListaProducto);
         listaProductos.ItemsSource = productos;
     }
 
@@ -35,13 +35,31 @@ public partial class ProductoPage : ContentPage
 
     private async void OnClickShowDetails(object sender, SelectedItemChangedEventArgs e)
     {
-        var toast = CommunityToolkit.Maui.Alerts.Toast.Make("Click en ver producto", ToastDuration.Short, 14);
-
+        var toast = CommunityToolkit.Maui.Alerts.Toast.Make("Click en editar producto", ToastDuration.Short, 14);
         await toast.Show();
         Producto producto = e.SelectedItem as Producto;
         await Navigation.PushAsync(new DetalleProductoPage()
         {
             BindingContext = producto,
         });
+    }
+
+    private async void OnClickEditarProducto(object sender, EventArgs e)
+    {
+        SwipeItem item = sender as SwipeItem;
+        Producto producto = item.BindingContext as Producto;
+        await Navigation.PushAsync(new NuevoProductoPage()
+        {
+            BindingContext = producto,
+        });
+    }
+    private async void OnClickBorrarProducto(object sender, EventArgs e)
+    {
+        SwipeItem item = sender as SwipeItem;
+        Producto producto = item.BindingContext as Producto;
+        Utils.Utils.ListaProducto.Remove(producto);
+        await Navigation.PopAsync();
+        await Navigation.PushAsync(new ProductoPage());
+        await Navigation.PopAsync();
     }
 }
