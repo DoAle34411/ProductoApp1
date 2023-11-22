@@ -2,21 +2,28 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProductoApp1.NuevoProductoPage"
-             Title="Producto Nuevo">
+             Title="Producto">
+    <ScrollView>
     <VerticalStackLayout>
         <TableView >
             <TableRoot>
                 <TableSection Title="Ingrese un nuevo producto">
+                    <TextCell Text="Titulo Libro:"></TextCell>
                     <EntryCell x:Name="Nombre"
                                Placeholder="Nombre"/>
+                    <TextCell Text="Autor Libro:"></TextCell>
                     <EntryCell x:Name="Autor"
                                Placeholder="Autor"/>
+                    <TextCell Text="Cantidad Libros Inventario:"></TextCell>
                     <EntryCell x:Name="Cantidad"
                                Placeholder="Cantidad"/>
+                    <TextCell Text="Genero Libro:"></TextCell>
                     <EntryCell x:Name="Genero"
                                Placeholder="Genero"/>
+                    <TextCell Text="Descripcion Libro:"></TextCell>
                     <EntryCell x:Name="Descripcion"
                                Placeholder="Descripción"/>
+                    <TextCell Text="Costo Libro:"></TextCell>
                     <EntryCell x:Name="Costo"
                                Placeholder="Costo"/>
                 </TableSection>
@@ -28,4 +35,5 @@
                 Clicked="OnClickGuardarNuevoProducto"/>
 
     </VerticalStackLayout>
+        </ScrollView>
 </ContentPage>
