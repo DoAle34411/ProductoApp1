@@ -6,15 +6,17 @@ using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Alerts;
 using System.Collections.ObjectModel;
 using ProductoApp1.Models;
+using ProductoApp1.Services;
 
 namespace ProductoApp1;
 
 public partial class ProductoPage : ContentPage
 {
-	public ProductoPage()
+    private readonly APIServices _APIServices;
+	public ProductoPage(APIServices aPIServices)
     {
         InitializeComponent();
-       
+       _APIServices = aPIServices;
     }
 
     protected override void OnAppearing()
@@ -59,7 +61,7 @@ public partial class ProductoPage : ContentPage
         Producto producto = item.BindingContext as Producto;
         Utils.Utils.ListaProducto.Remove(producto);
         await Navigation.PopAsync();
-        await Navigation.PushAsync(new ProductoPage());
+        await Navigation.PushAsync(new ProductoPage(_APIServices));
         await Navigation.PopAsync();
     }
 }
