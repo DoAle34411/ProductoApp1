@@ -1,15 +1,19 @@
 using CommunityToolkit.Maui.Core;
 using ProductoApp1.Models;
+using ProductoApp1.Services;
 
 namespace ProductoApp1;
 
 public partial class NuevoProductoPage : ContentPage
 {
     private Producto _producto;
-	public NuevoProductoPage()
-	{
-		InitializeComponent();
-	}
+    private readonly APIServices _APIServices;
+    public NuevoProductoPage(APIServices apiservice)
+    {
+        InitializeComponent();
+        _APIServices = apiservice;
+
+    }
 
     protected override void OnAppearing()
     {
@@ -29,7 +33,6 @@ public partial class NuevoProductoPage : ContentPage
     private async void OnClickGuardarNuevoProducto(object sender, EventArgs e)
     {
         try {
-            Console.WriteLine("hELLO");
             if (_producto != null)
             {
                 _producto.Nombre = Nombre.Text;
@@ -38,16 +41,17 @@ public partial class NuevoProductoPage : ContentPage
                 _producto.Genero = Genero.Text;
                 _producto.Autor = Autor.Text;
                 _producto.Costo = Double.Parse(Costo.Text);
+                await _APIServices.PutProducto(_producto.IdProducto, _producto);
                 //Utils.Utils.ListaProductos.Insert(_producto.IdProducto, _producto);
                 //await Navigation.
             }
             else 
             {
-                int id = Utils.Utils.ListaProducto.Count + 1;
+                //int id = Utils.Utils.ListaProducto.Count + 1;
                 Producto producto = new Producto
                 {
 
-                    IdProducto = id,
+                    //IdProducto = id,
                     Nombre = Nombre.Text,
                     Descripcion = Descripcion.Text,
                     Cantidad = Int32.Parse(Cantidad.Text),
@@ -55,7 +59,7 @@ public partial class NuevoProductoPage : ContentPage
                     Autor = Autor.Text,
                     Costo = Int32.Parse(Costo.Text)
                 };
-                Utils.Utils.ListaProducto.Add(producto);
+                await _APIServices.PostProducto(producto);
             }
             
             await Navigation.PopAsync();

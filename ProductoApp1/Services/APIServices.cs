@@ -15,8 +15,7 @@ namespace ProductoApp1.Services
         public HttpClient _httpClient;
         public APIServices()
         {
-
-            _baseUrl = "http://10.0.2.2:5078/";
+            _baseUrl = "https://apiproductosda20231127081337.azurewebsites.net";
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri(_baseUrl);
         }

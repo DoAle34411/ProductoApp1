@@ -1,16 +1,17 @@
 using ProductoApp1.Models;
+using ProductoApp1.Services;
 
 namespace ProductoApp1;
 
 public partial class DetalleProductoPage : ContentPage
 {
     private Producto _producto;
+    private readonly APIServices _APIServices;
+    public DetalleProductoPage(APIServices apiservice)
+    {
+        InitializeComponent();
+        _APIServices = apiservice;
 
-
-    public DetalleProductoPage()
-	{
-		InitializeComponent();
-       
     }
 
     protected override void OnAppearing()
@@ -32,14 +33,14 @@ public partial class DetalleProductoPage : ContentPage
 
     private async void OnClickEditar(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new NuevoProductoPage()
+        await Navigation.PushAsync(new NuevoProductoPage(_APIServices)
         {
             BindingContext = _producto,
         });
     }
     private async void OnClickBorrar(object sender, EventArgs e)
     {
-        Utils.Utils.ListaProducto.Remove(_producto);
+        await _APIServices.DeleteProducto(_producto.IdProducto);
         await Navigation.PopAsync();
     }
 }

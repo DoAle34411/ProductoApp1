@@ -19,10 +19,11 @@ public partial class ProductoPage : ContentPage
        _APIServices = aPIServices;
     }
 
-    protected override void OnAppearing()
+    protected async override void OnAppearing()
     {
         base.OnAppearing();
-        var productos = new ObservableCollection<Producto>(Utils.Utils.ListaProducto);
+        List<Producto> ListaProducto = await _APIServices.GetProductos();
+        var productos = new ObservableCollection<Producto>(ListaProducto);
         listaProductos.ItemsSource = productos;
     }
 
@@ -32,7 +33,7 @@ public partial class ProductoPage : ContentPage
 
         //await toast.Show();
 
-       await Navigation.PushAsync(new NuevoProductoPage());
+        await Navigation.PushAsync(new NuevoProductoPage(_APIServices));
     }
 
     private async void OnClickShowDetails(object sender, SelectedItemChangedEventArgs e)
@@ -40,7 +41,7 @@ public partial class ProductoPage : ContentPage
         var toast = CommunityToolkit.Maui.Alerts.Toast.Make("Click en editar producto", ToastDuration.Short, 14);
         await toast.Show();
         Producto producto = e.SelectedItem as Producto;
-        await Navigation.PushAsync(new DetalleProductoPage()
+        await Navigation.PushAsync(new DetalleProductoPage(_APIServices)
         {
             BindingContext = producto,
         });
@@ -50,7 +51,7 @@ public partial class ProductoPage : ContentPage
     {
         SwipeItem item = sender as SwipeItem;
         Producto producto = item.BindingContext as Producto;
-        await Navigation.PushAsync(new NuevoProductoPage()
+        await Navigation.PushAsync(new NuevoProductoPage(_APIServices)
         {
             BindingContext = producto,
         });
@@ -59,7 +60,7 @@ public partial class ProductoPage : ContentPage
     {
         SwipeItem item = sender as SwipeItem;
         Producto producto = item.BindingContext as Producto;
-        Utils.Utils.ListaProducto.Remove(producto);
+        await _APIServices.DeleteProducto(producto.IdProducto);
         await Navigation.PopAsync();
         await Navigation.PushAsync(new ProductoPage(_APIServices));
         await Navigation.PopAsync();
