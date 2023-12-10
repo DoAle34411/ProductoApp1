@@ -55,10 +55,67 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="DetalleUserPage.xaml.cs">
+	    <DependentUpon>DetalleUserPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="DetalleEventosPage.xaml.cs">
+	    <DependentUpon>DetalleEventosPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Login.xaml.cs">
+	    <DependentUpon>Login.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="MenuPrincipal.xaml.cs">
+	    <DependentUpon>MenuPrincipal.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="EventosPage.xaml.cs">
+	    <DependentUpon>EventosPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="NuevoEventosPage.xaml.cs">
+	    <DependentUpon>NuevoEventosPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="NuevoUserPage.xaml.cs">
+	    <DependentUpon>NuevoUserPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="SignUpPage.xaml.cs">
+	    <DependentUpon>SignUpPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="UsersPage.xaml.cs">
+	    <DependentUpon>UsersPage.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="DetalleUserPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="DetalleEventosPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="DetalleProductoPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Login.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="MenuPrincipal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="NuevoEventosPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="NuevoUserPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="SignUpPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="NuevoProductoPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="EventosPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UsersPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="ProductoPage.xaml">

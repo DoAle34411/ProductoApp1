@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductoApp1.SignUpPage"
+             Title="Registro">
+    <ScrollView>
+    <VerticalStackLayout>
+        <TableView >
+            <TableRoot>
+                <TableSection Title="Ingrese sus credenciales:">
+                    <TextCell Text="Cedula:"></TextCell>
+                    <EntryCell x:Name="Cedula"
+                               Placeholder="9999999999"/>
+                    <TextCell Text="Nombres Completos:"></TextCell>
+                    <EntryCell x:Name="Nombres"
+                               Placeholder="Pepe Luis"/>
+                    <TextCell Text="Apellidos Completos:"></TextCell>
+                    <EntryCell x:Name="Apellidos"
+                               Placeholder="Sanchez Perez"/>
+                    <TextCell Text="Clave:"></TextCell>
+                        <EntryCell x:Name="Clave"
+                               Placeholder="Clave"/>
+                    </TableSection>
+            </TableRoot>
+        </TableView>
+            <Button Text="Guardar Usuario"
+                FontSize="15"
+                Margin="5"
+                Clicked="OnClickGuardarNuevoUsuario"/>
+        </VerticalStackLayout>
+        </ScrollView>
+</ContentPage>

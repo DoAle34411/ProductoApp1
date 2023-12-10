@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductoApp1.EventosPage"
+             Title="Pagina Productos">
+    <ScrollView>
+        <VerticalStackLayout>
+        <HorizontalStackLayout
+            HorizontalOptions="FillAndExpand"
+            BackgroundColor="#cc5c82">
+            <Image Source="dotnet_bot.png"
+                   HeightRequest="50"
+                   WidthRequest="50"
+                   />
+            <Label Text="ProductoApp"
+                   FontSize="30"
+                   TextColor="White"/>
+        </HorizontalStackLayout>
+        <Button Text="Nuevo Evento"
+                FontSize="15"
+                Clicked="OnClickNuevoProducto"
+                Margin="5"/>
+        <ListView x:Name="listaEventos"
+                  RowHeight="100"
+                  ItemSelected="OnClickShowDetails">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Borrar"
+                                        BackgroundColor="Red"
+                                        Invoked="OnClickBorrarProducto"
+                                        />
+                                    <SwipeItem Text="Editar"
+                                        BackgroundColor="Yellow"
+                                        Invoked="OnClickEditarProducto"
+                                        />
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="dotnet_bot.png"
+                                HeightRequest="70"
+                                WidthRequest="70"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Nombre}"
+                                        FontSize="25"
+                                        WidthRequest="300"/>
+                                    <Label Text="{Binding diaEvento}"
+                                        FontSize="20"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </SwipeView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

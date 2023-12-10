@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductoApp1.Login"
+             Title="Inicio Sesion">
+    <ScrollView>
+        <VerticalStackLayout>
+            <TableView >
+                <TableRoot>
+                    <TableSection Title="Ingrese sus credenciales">
+                        <EntryCell x:Name="Cedula"
+                           Placeholder="Cedula"/>
+                        <EntryCell x:Name="Clave"
+                           Placeholder="Clave"/>
+                    </TableSection>
+                </TableRoot>
+            </TableView>
+            <Button Text="Ingresar"
+            FontSize="15"
+            Margin="5"
+            Clicked="OnClickLogin"/>
+            <Button Text="Registrarse"
+                FontSize="15"
+                Margin="5"
+                Clicked="OnClickSignUp"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

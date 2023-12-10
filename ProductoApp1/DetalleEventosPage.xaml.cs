@@ -3,11 +3,11 @@ using ProductoApp1.Services;
 
 namespace ProductoApp1;
 
-public partial class DetalleProductoPage : ContentPage
+public partial class DetalleEventosPage : ContentPage
 {
-    private Producto _producto;
+    private Eventos _evento;
     private readonly APIServices _APIServices;
-    public DetalleProductoPage(APIServices apiservice)
+    public DetalleEventosPage(APIServices apiservice)
     {
         InitializeComponent();
         _APIServices = apiservice;
@@ -17,12 +17,12 @@ public partial class DetalleProductoPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        _producto = BindingContext as Producto;
-        Nombre.Text = _producto.Nombre;
-        Cantidad.Text = _producto.Cantidad.ToString();
-        Descripcion.Text = _producto.Descripcion;
-        Genero.Text = _producto.Genero;
-        Autor.Text = _producto.Autor;
+        _evento = BindingContext as Eventos;
+        Nombre.Text = _evento.NombreEvento;
+        Descripcion.Text = _evento.DescripcionEvento;
+        Expositores.Text = _evento.Expositores;
+        Fecha.Text = _evento.diaEvento.ToString();
+        Hora.Text = _evento.horaEvento.ToString();
     }
 
     private async void OnClickVolver(object sender, EventArgs e)
@@ -32,14 +32,14 @@ public partial class DetalleProductoPage : ContentPage
 
     private async void OnClickEditar(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new NuevoProductoPage(_APIServices)
+        await Navigation.PushAsync(new NuevoEventosPage(_APIServices)
         {
-            BindingContext = _producto,
+            BindingContext = _evento,
         });
     }
     private async void OnClickBorrar(object sender, EventArgs e)
     {
-        await _APIServices.DeleteProducto(_producto.IdProducto);
+        await _APIServices.DeleteProducto(_evento.idEvento);
         await Navigation.PopAsync();
     }
 }

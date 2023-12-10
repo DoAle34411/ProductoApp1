@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductoApp1.NuevoEventosPage"
+             Title="Evento">
+    <ScrollView>
+    <VerticalStackLayout>
+        <TableView >
+            <TableRoot>
+                <TableSection Title="Ingrese un evento">
+                    <TextCell Text="Nombre Evento:"></TextCell>
+                    <EntryCell x:Name="Nombre"
+                               Placeholder="Nombre"/>
+                        <TextCell Text="Descripcion Evento:"></TextCell>
+                        <EntryCell x:Name="Descripcion"
+                                    Placeholder="Descripción"/>
+                        <TextCell Text="Expositores Evento:"></TextCell>
+                    <EntryCell x:Name="Expositores"
+                               Placeholder="Expositores"/>
+                    <TextCell Text="Dia Evento:"></TextCell>
+                    <EntryCell x:Name="diaEvento2"
+                               Placeholder="31"/>
+                        <TextCell Text="Mes Evento:"></TextCell>
+                        <EntryCell x:Name="mesEvento"
+                                    Placeholder="12"/>
+                        <TextCell Text="Año Evento:"></TextCell>
+                        <EntryCell x:Name="anioEvento"
+                                    Placeholder="2024"/>
+                        <TextCell Text="Hora Evento (si es todo el dia, inserte 0):"></TextCell>
+                        <EntryCell x:Name="horaEvento2"
+                                    Placeholder="23"/>
+                        <TextCell Text="Minuto Evento (si es todo el dia, inserte 0):"></TextCell>
+                        <EntryCell x:Name="minutoEvento"
+                                    Placeholder="59"/>
+                    </TableSection>
+            </TableRoot>
+        </TableView>
+        <Button Text="Guardar Producto"
+                FontSize="15"
+                Margin="5"
+                Clicked="OnClickGuardarNuevoProducto"/>
+
+    </VerticalStackLayout>
+        </ScrollView>
+</ContentPage>

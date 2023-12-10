@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="ProductoApp1.DetalleProductoPage"
-             Title="Detalle Producto">
+             x:Class="ProductoApp1.DetalleEventosPage"
+             Title="Detalle Evento">
     <ScrollView>
         <VerticalStackLayout>
         <Image Source="dotnet_bot.png"
@@ -20,24 +20,24 @@
                HorizontalOptions="StartAndExpand"
                Margin="20, 0"/>
             <StackLayout Orientation="Horizontal" Margin="20">
-                <Label Text="Autor: "
+                <Label Text="Expositores: "
                         FontSize="18"/>
-                <Label x:Name="Autor"
-                        Text="Autor"
+                <Label x:Name="Expositores"
+                        Text="Expositores"
                         FontSize="18"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal" Margin="20, 0">
-                <Label Text="Cantidad: "
+                <Label Text="Fecha: "
                     FontSize="18"/>
-                <Label x:Name="Cantidad"
-                    Text="Cantidad"
+                <Label x:Name="Fecha"
+                    Text="Fecha"
                     FontSize="18"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal" Margin="20, 0">
-                <Label Text="Genero: "
+                <Label Text="Hora: "
             FontSize="18"/>
-                <Label x:Name="Genero"
-            Text="Genero"
+                <Label x:Name="Hora"
+            Text="Hora"
             FontSize="18"/>
             </StackLayout>
             <Button

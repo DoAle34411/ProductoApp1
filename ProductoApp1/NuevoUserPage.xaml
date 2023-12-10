@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductoApp1.NuevoUserPage"
+             Title="Editar Usuario">
+    <ScrollView>
+    <VerticalStackLayout>
+        <TableView >
+            <TableRoot>
+                <TableSection Title="Edite el Usuario">
+                    <TextCell Text="Cedula:"></TextCell>
+                    <EntryCell x:Name="Cedula"/>
+                    <TextCell Text="Nombres Completos:"></TextCell>
+                    <EntryCell x:Name="Nombres"/>
+                    <TextCell Text="Apellidos Completos:"></TextCell>
+                    <EntryCell x:Name="Apellidos"/>
+                    <TextCell Text="Codigo Acceso:"></TextCell>
+                     <EntryCell x:Name="CodigoAcceso"/>
+                    </TableSection>
+            </TableRoot>
+        </TableView>
+        <Button Text="Guardar Usuario"
+                FontSize="15"
+                Margin="5"
+                Clicked="OnClickGuardarNuevoProducto"/>
+
+    </VerticalStackLayout>
+        </ScrollView>
+</ContentPage>

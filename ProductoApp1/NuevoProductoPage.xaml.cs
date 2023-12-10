@@ -26,7 +26,6 @@ public partial class NuevoProductoPage : ContentPage
             Descripcion.Text = _producto.Descripcion;
             Genero.Text = _producto.Genero;
             Autor.Text = _producto.Autor;
-            Costo.Text = _producto.Costo.ToString();
         }
     }
 
@@ -40,8 +39,8 @@ public partial class NuevoProductoPage : ContentPage
                 _producto.Cantidad = Int32.Parse(Cantidad.Text);
                 _producto.Genero = Genero.Text;
                 _producto.Autor = Autor.Text;
-                _producto.Costo = Double.Parse(Costo.Text);
-                await _APIServices.PutProducto(_producto.IdProducto, _producto);
+                _producto.IdUsuario = 0;
+                await _APIServices.PUTProducto(_producto.IdProducto, _producto);
                 //Utils.Utils.ListaProductos.Insert(_producto.IdProducto, _producto);
                 //await Navigation.
             }
@@ -57,9 +56,9 @@ public partial class NuevoProductoPage : ContentPage
                     Cantidad = Int32.Parse(Cantidad.Text),
                     Genero = Genero.Text,
                     Autor = Autor.Text,
-                    Costo = Int32.Parse(Costo.Text)
+                    IdUsuario = 0,
                 };
-                await _APIServices.PostProducto(producto);
+                await _APIServices.POSTProducto(producto);
             }
             
             await Navigation.PopAsync();

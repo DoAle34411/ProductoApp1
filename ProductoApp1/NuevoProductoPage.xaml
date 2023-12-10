@@ -21,12 +21,9 @@
                     <EntryCell x:Name="Genero"
                                Placeholder="Genero"/>
                     <TextCell Text="Descripcion Libro:"></TextCell>
-                    <EntryCell x:Name="Descripcion"
+                        <EntryCell x:Name="Descripcion"
                                Placeholder="Descripción"/>
-                    <TextCell Text="Costo Libro:"></TextCell>
-                    <EntryCell x:Name="Costo"
-                               Placeholder="Costo"/>
-                </TableSection>
+                    </TableSection>
             </TableRoot>
         </TableView>
         <Button Text="Guardar Producto"

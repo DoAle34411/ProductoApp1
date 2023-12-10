@@ -8,7 +8,7 @@ namespace ProductoApp1
         {
             InitializeComponent();
             APIServices aPIServices = new APIServices();
-            MainPage = new NavigationPage(new ProductoPage(aPIServices));
+            MainPage = new NavigationPage(new MenuPrincipal(aPIServices));
             //MainPage = new ProductoPage();
         }
     }

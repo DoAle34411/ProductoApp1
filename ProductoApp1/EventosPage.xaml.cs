@@ -10,11 +10,11 @@ using ProductoApp1.Services;
 
 namespace ProductoApp1;
 
-public partial class ProductoPage : ContentPage
+public partial class EventosPage : ContentPage
 {
     private readonly APIServices _APIServices;
     public int UserAccess { get; set; }
-    public ProductoPage(APIServices aPIServices)
+    public EventosPage(APIServices aPIServices)
     {
         InitializeComponent();
        _APIServices = aPIServices;
@@ -24,9 +24,9 @@ public partial class ProductoPage : ContentPage
     protected async override void OnAppearing()
     {
         base.OnAppearing();
-        List<Producto> ListaProducto = await _APIServices.GetProducts();
-        var productos = new ObservableCollection<Producto>(ListaProducto);
-        listaProductos.ItemsSource = productos;
+        List<Eventos> ListaEventos = await _APIServices.GetEventos();
+        var eventos = new ObservableCollection<Eventos>(ListaEventos);
+        listaEventos.ItemsSource = eventos;
         string idUser = Preferences.Get("IdUser", "0");
         int idUsuario = int.Parse(idUser);
         User user = await _APIServices.GetUser(idUsuario);
@@ -37,23 +37,22 @@ public partial class ProductoPage : ContentPage
     {
         if (UserAccess == 1)
         {
-            await Navigation.PushAsync(new NuevoProductoPage(_APIServices));
+            await Navigation.PushAsync(new NuevoEventosPage(_APIServices));
         }
-        else
+        else 
         {
             await DisplayAlert("Permisos", "No cuenta con los permisos requeridos", "Ok");
         }
-        
     }
 
     private async void OnClickShowDetails(object sender, SelectedItemChangedEventArgs e)
     {
-        var toast = CommunityToolkit.Maui.Alerts.Toast.Make("Click en editar producto", ToastDuration.Short, 14);
+        var toast = CommunityToolkit.Maui.Alerts.Toast.Make("Click en detalle evento", ToastDuration.Short, 14);
         await toast.Show();
-        Producto producto = e.SelectedItem as Producto;
-        await Navigation.PushAsync(new DetalleProductoPage(_APIServices)
+        Eventos evento = e.SelectedItem as Eventos;
+        await Navigation.PushAsync(new DetalleEventosPage(_APIServices)
         {
-            BindingContext = producto,
+            BindingContext = evento,
         });
     }
 
@@ -62,10 +61,10 @@ public partial class ProductoPage : ContentPage
         if (UserAccess == 1)
         {
             SwipeItem item = sender as SwipeItem;
-            Producto producto = item.BindingContext as Producto;
+            Eventos evento = item.BindingContext as Eventos;
             await Navigation.PushAsync(new NuevoProductoPage(_APIServices)
             {
-                BindingContext = producto,
+                BindingContext = evento,
             });
         }
         else
@@ -78,10 +77,10 @@ public partial class ProductoPage : ContentPage
         if (UserAccess == 1)
         {
             SwipeItem item = sender as SwipeItem;
-            Producto producto = item.BindingContext as Producto;
-            await _APIServices.DeleteProducto(producto.IdProducto);
+            Eventos evento = item.BindingContext as Eventos;
+            await _APIServices.DeleteEventos(evento.idEvento);
             await Navigation.PopAsync();
-            await Navigation.PushAsync(new ProductoPage(_APIServices));
+            await Navigation.PushAsync(new EventosPage(_APIServices));
             await Navigation.PopAsync();
         }
         else

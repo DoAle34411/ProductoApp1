@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,71 +16,125 @@ namespace ProductoApp1.Services
         public HttpClient _httpClient;
         public APIServices()
         {
-            _baseUrl = "https://apiproductosda20231127081337.azurewebsites.net";
+            _baseUrl = "https://apiproductos20231208162555.azurewebsites.net";
             _httpClient = new HttpClient();
             _httpClient.BaseAddress = new Uri(_baseUrl);
         }
 
 
-        public async Task<bool> DeleteProducto(int IdProducto)
+        public async Task DeleteEventos(int idEvento)
         {
-            var response = await _httpClient.DeleteAsync($"/api/Producto/{IdProducto}");
-            if (response.StatusCode == HttpStatusCode.NoContent)
-            {
-                return true;
-            }
-            return false;
+            await _httpClient.DeleteAsync("api/Eventos/" + idEvento);
         }
 
-        public async Task<Producto> GetProducto(int IdProducto)
+        public async Task DeleteProducto(int id)
         {
-            var response = await _httpClient.GetAsync($"/api/Producto/{IdProducto}");
-            if (response.IsSuccessStatusCode)
+            await _httpClient.DeleteAsync("api/Producto/" + id);
+        }
+        public async Task<Eventos> GetEvento(int idEvento)
+        {
+            try
             {
-                var json_response = await response.Content.ReadAsStringAsync();
-                Producto producto = JsonConvert.DeserializeObject<Producto>(json_response);
+                var eventos = await _httpClient.GetFromJsonAsync<Eventos>("api/Eventos/" + idEvento);
+                return eventos;
+            }
+            catch (Exception ex)
+            {
+                return new Eventos();
+            }
+        }
+
+        public async Task<List<Eventos>> GetEventos()
+        {
+            var eventos = await _httpClient.GetFromJsonAsync<List<Eventos>>("api/Eventos");
+            return eventos;
+        }
+
+        public async Task<Producto> GetProduct(int id)
+        {
+            try
+            {
+                var producto = await _httpClient.GetFromJsonAsync<Producto>("api/Producto/" + id);
                 return producto;
             }
-            return new Producto();
+            catch (Exception ex)
+            {
+                return new Producto();
+            }
         }
 
-        public async Task<List<Producto>> GetProductos()
+        public async Task<List<Producto>> GetProducts()
         {
-            var response = await _httpClient.GetAsync("/api/Producto");
-            if (response.IsSuccessStatusCode)
-            {
-                var json_response = await response.Content.ReadAsStringAsync();
-                List<Producto> productos = JsonConvert.DeserializeObject<List<Producto>>(json_response);
-                return productos;
-            }
-            return new List<Producto>();
-
+            var productos = await _httpClient.GetFromJsonAsync<List<Producto>>("api/Producto");
+            return productos;
         }
 
-        public async Task<Producto> PostProducto(Producto producto)
+        public async Task<User> GetUser(string Cedula, string Clave)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(producto), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync("/api/Producto/", content);
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var json_response = await response.Content.ReadAsStringAsync();
-                Producto producto2 = JsonConvert.DeserializeObject<Producto>(json_response);
-                return producto2;
+                var usuario = await _httpClient.GetFromJsonAsync<User>($"api/User/{Cedula}/{Clave}");
+                return usuario;
             }
-            return new Producto();
+            catch (Exception ex)
+            {
+                return new User();
+            }
         }
 
-        public async Task<Producto> PutProducto(int IdProducto, Producto producto)
+        public async Task<User> GetUser(int IdUsuario)
         {
-            var content = new StringContent(JsonConvert.SerializeObject(producto), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PutAsync($"/api/Producto/{IdProducto}", content);
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var json_response = await response.Content.ReadAsStringAsync();
-                Producto producto2 = JsonConvert.DeserializeObject<Producto>(json_response);
-                return producto2;
+                var usuario = await _httpClient.GetFromJsonAsync<User>($"api/User/{IdUsuario}");
+                return usuario;
             }
-            return new Producto();
+            catch (Exception ex)
+            {
+                return new User();
+            }
+        }
+
+        public async Task<List<User>> GetUsers()
+        {
+            var users = await _httpClient.GetFromJsonAsync<List<User>>("api/User");
+            return users;
+        }
+
+        public async Task<Eventos> POSTEventos(Eventos evento)
+        {
+            await _httpClient.PostAsJsonAsync("api/Eventos", evento);
+            return evento;
+        }
+
+        public async Task<Producto> POSTProducto(Producto producto)
+        {
+            await _httpClient.PostAsJsonAsync("api/Producto", producto);
+            return producto;
+        }
+
+        public async Task<User> POSTUser(User user)
+        {
+            await _httpClient.PostAsJsonAsync("api/User", user);
+            return user;
+        }
+
+        public async Task<Eventos> PUTEventos(int idEvento, Eventos evento)
+        {
+            await _httpClient.PutAsJsonAsync("api/Eventos/" + idEvento, evento);
+            return evento;
+        }
+
+        public async Task<Producto> PUTProducto(int IdProducto, Producto producto)
+        {
+            await _httpClient.PutAsJsonAsync("api/Producto/" + IdProducto, producto);
+            return producto;
+        }
+
+        public async Task<User> PutUser(int idUsuario, User user)
+        {
+            await _httpClient.PutAsJsonAsync("api/User/" + idUsuario, user);
+            return user;
         }
     }
 }
