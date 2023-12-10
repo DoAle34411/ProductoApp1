@@ -27,10 +27,17 @@ namespace ProductoApp1
             User usuario_encontrado = await _APIService.GetUser(username, password);
             if (usuario_encontrado != null)
             {
-                Console.WriteLine(3);
-                Preferences.Set("username", usuario_encontrado.Cedula);
-                Preferences.Set("IdUser", usuario_encontrado.IdUsuario.ToString());
-                await Navigation.PopAsync();
+                if (usuario_encontrado.CodigoAcceso == 3)
+                {
+                    await DisplayAlert("Acceso Incorrecto", "Esta cuenta no tiene acceso. Reintente con otra.", "Ok");
+                }
+                else 
+                {
+                    Console.WriteLine(3);
+                    Preferences.Set("username", usuario_encontrado.Cedula);
+                    Preferences.Set("IdUser", usuario_encontrado.IdUsuario.ToString());
+                    await Navigation.PopAsync();
+                }
             }
             else {
                 await DisplayAlert("Valores Incorrectos", "Inserte Valores Correctos", "Ok");

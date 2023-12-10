@@ -19,11 +19,10 @@
                     </TableSection>
             </TableRoot>
         </TableView>
-        <Button Text="Guardar Usuario"
+            <Button Text="Guardar Usuario"
                 FontSize="15"
                 Margin="5"
                 Clicked="OnClickGuardarNuevoProducto"/>
-
-    </VerticalStackLayout>
+        </VerticalStackLayout>
         </ScrollView>
 </ContentPage>

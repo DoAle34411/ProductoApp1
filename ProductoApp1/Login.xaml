@@ -5,11 +5,32 @@
              Title="Inicio Sesion">
     <ScrollView>
         <VerticalStackLayout>
+            <Image
+                Source="book_rev.png"
+                SemanticProperties.Description="Pila de libros"
+                HeightRequest="200"
+                HorizontalOptions="Center" />
+            <Label
+                Margin="0,60,0,0"
+                Text="¡Bienvenidos!"
+                FontAttributes="Bold,Italic"
+                FontSize="45"
+                HorizontalOptions="Center"
+                TextDecorations="None"/>
+            <Label
+                Text="EL MUNDO DE LA LECTURA EN TUS MANOS"
+                FontAttributes="Bold,Italic"
+                Margin="0,60,0,0"
+                FontSize="18"
+                HorizontalOptions="Center"
+                TextDecorations="None"/>
             <TableView >
                 <TableRoot>
                     <TableSection Title="Ingrese sus credenciales">
+                        <TextCell Text="Ingrese su cedula:"></TextCell>
                         <EntryCell x:Name="Cedula"
                            Placeholder="Cedula"/>
+                        <TextCell Text="Ingrese su clave:"></TextCell>
                         <EntryCell x:Name="Clave"
                            Placeholder="Clave"/>
                     </TableSection>
@@ -22,7 +43,8 @@
             <Button Text="Registrarse"
                 FontSize="15"
                 Margin="5"
-                Clicked="OnClickSignUp"/>
+                Clicked="OnClickSignUp"
+                    BackgroundColor="#cc5c82"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

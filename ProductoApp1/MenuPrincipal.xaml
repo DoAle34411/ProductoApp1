@@ -8,13 +8,20 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
-
             <Image
-                Source="dotnet_bot.png"
-                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                Source="book_rev.png"
+                SemanticProperties.Description="Pila de libros"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
-
+            <HorizontalStackLayout>
+                <Label
+                Text="Que bueno verte, "
+                FontSize="20"
+                HorizontalOptions="Center"
+                TextDecorations="None"/>
+                <Label x:Name="Username"
+                   FontSize="20"/>
+            </HorizontalStackLayout>
             <Label
                 Text="Seleccione lo que quiere ver:"
                 SemanticProperties.HeadingLevel="Level1"
@@ -25,17 +32,19 @@
                 x:Name="CounterBtn"
                 Text="Productos"
                 Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+                HorizontalOptions="FillAndExpand" />
             <Button
                 x:Name="EventosBtn"
                 Text="Eventos"
                 Clicked="OnEventosClicked"
-                HorizontalOptions="Center" />
+                HorizontalOptions="FillAndExpand" 
+                BackgroundColor="#cc5c82"/>
             <Button
                 x:Name="UsersBtn"
                 Text="Usuarios"
                 Clicked="OnUsersClicked"
-                HorizontalOptions="Center">
+                HorizontalOptions="FillAndExpand"
+                BackgroundColor="#9e5b91">
                 <Button.Triggers>
                     <DataTrigger TargetType="Button" Binding="{Binding UserAccess}" Value="1">
                         <Setter Property="IsVisible" Value="True" />
@@ -55,7 +64,8 @@
                 x:Name="CerrarBtn"
                 Text="Cerrar Sesion"
                 Clicked="OnCloseClicked"
-                HorizontalOptions="Center" />
+                HorizontalOptions="FillAndExpand" 
+                BackgroundColor="DarkRed"/>
 
         </VerticalStackLayout>
     </ScrollView>

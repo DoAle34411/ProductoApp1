@@ -39,6 +39,7 @@ public partial class NuevoUserPage : ContentPage
                 _user.CodigoAcceso = Int32.Parse(CodigoAcceso.Text);
                 _user.IdUsuarioActivo = 0;
                 await _APIServices.PutUser(_user.IdUsuario, _user);
+                await Navigation.PopAsync();
             }
             else 
             {

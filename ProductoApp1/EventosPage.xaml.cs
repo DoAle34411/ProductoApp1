@@ -62,7 +62,7 @@ public partial class EventosPage : ContentPage
         {
             SwipeItem item = sender as SwipeItem;
             Eventos evento = item.BindingContext as Eventos;
-            await Navigation.PushAsync(new NuevoProductoPage(_APIServices)
+            await Navigation.PushAsync(new NuevoEventosPage(_APIServices)
             {
                 BindingContext = evento,
             });
