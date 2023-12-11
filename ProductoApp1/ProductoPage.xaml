@@ -16,7 +16,8 @@
                    FontSize="30"
                    TextColor="White"/>
         </HorizontalStackLayout>
-        <Button Text="Nuevo Producto"
+            <Button x:Name="BotonNuevo" 
+            Text="Nuevo Producto"
                 FontSize="15"
                 Clicked="OnClickNuevoProducto"
                 Margin="5"/>
@@ -29,7 +30,9 @@
                         <SwipeView>
                             <SwipeView.LeftItems>
                                 <SwipeItems>
-                                    <SwipeItem Text="Borrar"
+                                    <SwipeItem
+                                        x:Name="BorrarBut"
+                                        Text="Borrar"
                                         BackgroundColor="Red"
                                         Invoked="OnClickBorrarProducto"
                                         />

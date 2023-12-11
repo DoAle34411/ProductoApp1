@@ -16,7 +16,9 @@
                    FontSize="30"
                    TextColor="White"/>
         </HorizontalStackLayout>
-        <Button Text="Nuevo Evento"
+        <Button
+            x:Name="NuevoEventoBut"
+            Text="Nuevo Evento"
                 FontSize="15"
                 Clicked="OnClickNuevoProducto"
                 Margin="5"/>

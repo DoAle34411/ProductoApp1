@@ -22,6 +22,20 @@ public partial class DetalleUserPage : ContentPage
         Apellidos.Text = _user.Apellidos;
         Cedula.Text = _user.Cedula;
         CodigoAcceso.Text = _user.CodigoAcceso.ToString();
+        bool mensajeRenta = _user.HaRetirado;
+        if (mensajeRenta)
+        {
+            HaRetirado.Text = "Si";
+            IdLibro.Text = _user.IdLibroRetirado.ToString();
+        }
+        else 
+        {
+            HaRetirado.Text = "No";
+            IdLibro.IsVisible = false;
+            IdLibroLabel.IsVisible = false;
+        }
+        
+        
     }
 
     private async void OnClickVolver(object sender, EventArgs e)

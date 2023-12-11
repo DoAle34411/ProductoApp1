@@ -41,12 +41,20 @@
             FontSize="18"/>
             </StackLayout>
             <Button
-            Text="Regresar"
+            Text="Rentar"
             FontSize="20"
             HorizontalOptions="Fill"
             Margin="10"
-            Clicked="OnClickVolver"
-        />
-    </VerticalStackLayout>
+            Clicked="OnClickRentar"
+            BackgroundColor="#cc5c82"
+            />
+            <Button
+                Text="Regresar"
+                FontSize="20"
+                HorizontalOptions="Fill"
+                Margin="10"
+                Clicked="OnClickVolver"
+            />
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

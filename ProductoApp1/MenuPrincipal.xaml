@@ -45,20 +45,6 @@
                 Clicked="OnUsersClicked"
                 HorizontalOptions="FillAndExpand"
                 BackgroundColor="#9e5b91">
-                <Button.Triggers>
-                    <DataTrigger TargetType="Button" Binding="{Binding UserAccess}" Value="1">
-                        <Setter Property="IsVisible" Value="True" />
-                    </DataTrigger>
-                    <DataTrigger TargetType="Button" Binding="{Binding UserAccess}" Value="2">
-                        <Setter Property="IsVisible" Value="False" />
-                    </DataTrigger>
-                    <DataTrigger TargetType="Button" Binding="{Binding UserAccess}" Value="3">
-                        <Setter Property="IsVisible" Value="False" />
-                    </DataTrigger>
-                    <DataTrigger TargetType="Button" Binding="{Binding UserAccess}" Value="4">
-                        <Setter Property="IsVisible" Value="False" />
-                    </DataTrigger>
-                </Button.Triggers>
             </Button>
             <Button
                 x:Name="CerrarBtn"

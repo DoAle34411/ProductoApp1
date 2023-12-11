@@ -48,14 +48,16 @@ namespace ProductoApp1
         }
         private async void OnUsersClicked(object sender, EventArgs e)
         {
-            if (UserAccess == 1)
+            string username = Preferences.Get("username", "0");
+            string idUser = Preferences.Get("IdUser".ToString(), "0");
+            int idUsuario = int.Parse(idUser);
+            User user = await _APIServices.GetUser(idUsuario);
+            Username.Text = user.Nombres;
+            UserAccess = user.CodigoAcceso;
+            await Navigation.PushAsync(new DetalleUserPage(_APIServices)
             {
-                await Navigation.PushAsync(new UsersPage(_APIServices));
-            }
-            else
-            {
-                await DisplayAlert("Permisos", "No cuenta con los permisos requeridos", "Ok");
-            }
+                BindingContext = user,
+            });
         }
         private async void OnCloseClicked(object sender, EventArgs e)
         {

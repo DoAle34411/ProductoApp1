@@ -29,10 +29,6 @@ public partial class UsersPage : ContentPage
 
     private async void OnClickNuevoUser(object sender, EventArgs e)
     {
-        //var toast = Toast.Make("Click en nuevo producto", ToastDuration.Short, 14);
-
-        //await toast.Show();
-
         await Navigation.PushAsync(new SignUpPage(_APIServices));
     }
 

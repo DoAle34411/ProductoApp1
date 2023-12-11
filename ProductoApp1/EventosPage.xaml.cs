@@ -31,6 +31,14 @@ public partial class EventosPage : ContentPage
         int idUsuario = int.Parse(idUser);
         User user = await _APIServices.GetUser(idUsuario);
         UserAccess = user.CodigoAcceso;
+        if (UserAccess == 1)
+        {
+            NuevoEventoBut.IsVisible = true;
+        }
+        else
+        {
+            NuevoEventoBut.IsVisible = false;
+        }
     }
 
     private async void OnClickNuevoProducto(object sender, EventArgs e)
