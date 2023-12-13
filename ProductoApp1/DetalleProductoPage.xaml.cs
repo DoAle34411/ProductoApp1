@@ -24,6 +24,9 @@ public partial class DetalleProductoPage : ContentPage
         Descripcion.Text = _producto.Descripcion;
         Genero.Text = _producto.Genero;
         Autor.Text = _producto.Autor;
+        string urlNueva= "https:\\\\crud-mvc20231209223757.azurewebsites.net" + _producto.urlImage;
+        urlNueva = urlNueva.Replace("\\", "/");
+        _producto.urlImage = urlNueva;
         string username = Preferences.Get("username", "0");
         string idUser = Preferences.Get("IdUser".ToString(), "0");
         int idUsuario = int.Parse(idUser);

@@ -27,6 +27,7 @@ public partial class EventosPage : ContentPage
         List<Eventos> ListaEventos = await _APIServices.GetEventos();
         var eventos = new ObservableCollection<Eventos>(ListaEventos);
         listaEventos.ItemsSource = eventos;
+        listaEventos2.ItemsSource = eventos;
         string idUser = Preferences.Get("IdUser", "0");
         int idUsuario = int.Parse(idUser);
         User user = await _APIServices.GetUser(idUsuario);
@@ -34,10 +35,14 @@ public partial class EventosPage : ContentPage
         if (UserAccess == 1)
         {
             NuevoEventoBut.IsVisible = true;
+            listaEventos.IsVisible = true;
+            listaEventos2.IsVisible = false;
         }
         else
         {
             NuevoEventoBut.IsVisible = false;
+            listaEventos.IsVisible = false;
+            listaEventos2.IsVisible = true;
         }
     }
 

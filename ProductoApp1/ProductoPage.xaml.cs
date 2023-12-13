@@ -25,16 +25,18 @@ public partial class ProductoPage : ContentPage
     {
         base.OnAppearing();
         List<Producto> ListaProducto = await _APIServices.GetProducts();
-        List<Producto> ListaProductos2 = new List<Producto>();
-        for (int i = 0; i<ListaProducto.Count; i++) 
+        for (int i = 0; i < ListaProducto.Count; i++)
         {
-            if (ListaProducto.ElementAt(i).Cantidad >= 1) 
-            {
-                ListaProductos2.Add(ListaProducto.ElementAt(i));
-            }
+            ListaProducto.ElementAt(i).urlImage = "https:\\\\crud-mvc20231209223757.azurewebsites.net" + ListaProducto.ElementAt(i).urlImage;
+            ListaProducto.ElementAt(i).urlImage = ListaProducto.ElementAt(i).urlImage.Replace("\\", "/");
         }
+        List<Producto> ListaProductos2 = new List<Producto>();
+        ListaProductos2 = ListaProducto;
+        Console.WriteLine(ListaProductos2.ElementAt(1).urlImage);
         var productos = new ObservableCollection<Producto>(ListaProductos2);
-        listaProductos.ItemsSource = productos;
+        var productosAdmin = new ObservableCollection<Producto>(ListaProducto);
+        listaProductosUser.ItemsSource = productos;
+        listaProductos.ItemsSource=productosAdmin;
         string idUser = Preferences.Get("IdUser", "0");
         int idUsuario = int.Parse(idUser);
         User user = await _APIServices.GetUser(idUsuario);
@@ -42,10 +44,14 @@ public partial class ProductoPage : ContentPage
         if (UserAccess == 1)
         {
             BotonNuevo.IsVisible = true;
+            listaProductos.IsVisible = true;
+            listaProductosUser.IsVisible = false;
         }
         else 
         {
             BotonNuevo.IsVisible = false;
+            listaProductos.IsVisible = false;
+            listaProductosUser.IsVisible = true;
         }
     }
 

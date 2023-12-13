@@ -58,6 +58,28 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </VerticalStackLayout>
+            <ListView x:Name="listaEventos2"
+          RowHeight="100"
+          ItemSelected="OnClickShowDetails">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="dotnet_bot.png"
+                        HeightRequest="70"
+                        WidthRequest="70"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding NombreEvento}"
+                                FontSize="25"
+                                WidthRequest="300"/>
+                                    <Label Text="{Binding diaEvento}"
+                                FontSize="20"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

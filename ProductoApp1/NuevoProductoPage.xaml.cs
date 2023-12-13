@@ -40,6 +40,7 @@ public partial class NuevoProductoPage : ContentPage
                 _producto.Genero = Genero.Text;
                 _producto.Autor = Autor.Text;
                 _producto.IdUsuario = 0;
+                _producto.urlImage = "N/A";
                 await _APIServices.PUTProducto(_producto.IdProducto, _producto);
                 //Utils.Utils.ListaProductos.Insert(_producto.IdProducto, _producto);
                 //await Navigation.
@@ -57,6 +58,7 @@ public partial class NuevoProductoPage : ContentPage
                     Genero = Genero.Text,
                     Autor = Autor.Text,
                     IdUsuario = 0,
+                    urlImage="null",
                 };
                 await _APIServices.POSTProducto(producto);
             }

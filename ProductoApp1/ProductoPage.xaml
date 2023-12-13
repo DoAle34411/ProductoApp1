@@ -43,10 +43,8 @@
                                 </SwipeItems>
                             </SwipeView.LeftItems>
                             <StackLayout Orientation="Horizontal">
-                                <Image Source="dotnet_bot.png"
-                                HeightRequest="70"
-                                WidthRequest="70"/>
-                                <StackLayout Orientation="Vertical">
+                                    <Image Source="{Binding urlImage}" HeightRequest="70" WidthRequest="70" Margin="0,0,10,0" />
+                                    <StackLayout Orientation="Vertical">
                                     <Label Text="{Binding Nombre}"
                                         FontSize="25"
                                         WidthRequest="300"/>
@@ -59,6 +57,26 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </VerticalStackLayout>
+            <ListView x:Name="listaProductosUser"
+          RowHeight="100"
+          ItemSelected="OnClickShowDetails">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="{Binding urlImage}" HeightRequest="70" WidthRequest="70" Margin="0,0,10,0" />
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Nombre}"
+                                FontSize="25"
+                                WidthRequest="300"/>
+                                    <Label Text="{Binding Cantidad}"
+                                FontSize="20"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

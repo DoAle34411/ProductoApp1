@@ -23,5 +23,6 @@ namespace ProductoApp1.Models
         [Required]
         public string Genero { get; set; }
         public int IdUsuario { get; set; }
+        public string urlImage { get; set; }
     }
 }
